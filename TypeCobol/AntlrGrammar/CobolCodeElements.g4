@@ -229,6 +229,7 @@ codeElement:
 	| alterSequenceStatement
 	| executeImmediateStatement
 	| insertStatement
+	| updateStatement
 	| unsupportedSqlStatement
 
 //	[TYPECOBOL]
@@ -8540,6 +8541,20 @@ insertStatement:
     (SQL_VALUES LeftParenthesisSeparator repeatedSourceValue RightParenthesisSeparator | fullselect);
 insertColumnList:
     LeftParenthesisSeparator column_name (SQL_CommaSeparator column_name)* RightParenthesisSeparator;
+
+// UPDATE statement
+// See Documentation [https://www.ibm.com/docs/en/db2-for-zos/12?topic=statements-update]
+updateStatement:
+    SQL_UPDATE tableOrViewOrCorrelationName SQL_SET
+    updateSetClause (SQL_CommaSeparator updateSetClause)*
+    whereClauseWithHostVars?;
+updateSetClause:
+    column_name EqualOperator (hostVariable | (~(SQL_CommaSeparator | SQL_WHERE | END_EXEC | ColonSeparator))+);
+
+// WHERE clause - creates sub-contexts for host variables
+// ColonSeparator excluded from negated set so hostVariable gets priority
+whereClauseWithHostVars:
+    SQL_WHERE (hostVariable | ~(END_EXEC | ColonSeparator))*;
 
 // Catch-all rule for SQL statements without dedicated grammar rules.
 // Must be listed LAST among SQL alternatives in codeElement so that

@@ -1021,5 +1021,36 @@ namespace TypeCobol.Compiler.Sql.CodeElements
             }
             return null;
         }
+
+        public UpdateStatement CreateUpdateStatement(CodeElementsParser.UpdateStatementContext context)
+        {
+            string tableName = ExtractQualifiedTableName(context.tableOrViewOrCorrelationName());
+
+            var setBindings = new List<HostVariableBinding>();
+            foreach (var setClause in context.updateSetClause())
+            {
+                string colName = setClause.column_name()?.GetText();
+                if (setClause.hostVariable() != null)
+                {
+                    var binding = CreateHostVariableBinding(setClause.hostVariable(), HostVariableDirection.IN, colName);
+                    setBindings.Add(binding);
+                }
+            }
+
+            var whereBindings = ExtractWhereHostVariables(context.whereClauseWithHostVars());
+            return new UpdateStatement(tableName, setBindings, whereBindings);
+        }
+
+        private List<HostVariableBinding> ExtractWhereHostVariables(CodeElementsParser.WhereClauseWithHostVarsContext context)
+        {
+            var bindings = new List<HostVariableBinding>();
+            if (context == null) return bindings;
+            foreach (var hvCtx in context.hostVariable())
+            {
+                var binding = CreateHostVariableBinding(hvCtx, HostVariableDirection.IN);
+                bindings.Add(binding);
+            }
+            return bindings;
+        }
     }
 }

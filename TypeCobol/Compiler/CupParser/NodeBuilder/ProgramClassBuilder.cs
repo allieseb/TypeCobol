@@ -1810,5 +1810,11 @@ namespace TypeCobol.Compiler.CupParser.NodeBuilder
             Exit();
             Dispatcher.OnInsertStatement(insert);
         }
+        public void OnUpdateStatement([NotNull] UpdateStatement update)
+        {
+            Enter(new Update(update), update);
+            Exit();
+            Dispatcher.OnUpdateStatement(update);
+        }
     }
 }

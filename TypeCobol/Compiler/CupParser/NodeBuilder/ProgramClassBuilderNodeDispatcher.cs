@@ -914,5 +914,9 @@ namespace TypeCobol.Compiler.CupParser.NodeBuilder
         {
             foreach (var listener in _listeners) listener.OnInsertStatement(insert);
         }
+        public void OnUpdateStatement([NotNull] UpdateStatement update)
+        {
+            foreach (var listener in _listeners) listener.OnUpdateStatement(update);
+        }
     }
 }

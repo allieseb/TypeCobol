@@ -852,6 +852,15 @@ namespace TypeCobol.Test.Utils
                 return true;
             }
 
+            public override bool Visit(UpdateStatement updateStatement)
+            {
+                _writer.WriteLine($"line {updateStatement.Line}: {nameof(UpdateStatement)}");
+                DumpString(nameof(updateStatement.TableName), updateStatement.TableName);
+                DumpHostVariableBindings(updateStatement.SetBindings, "SetBindings");
+                DumpHostVariableBindings(updateStatement.WhereBindings, "WhereBindings");
+                return true;
+            }
+
             public override bool Visit(UnsupportedSqlStatement unsupportedSqlStatement)
             {
                 _writer.WriteLine($"line {unsupportedSqlStatement.Line}: {nameof(UnsupportedSqlStatement)}");

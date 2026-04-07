@@ -177,6 +177,7 @@
         AlterSequenceStatement,
         ExecuteImmediateStatement,
         InsertStatement,
+        UpdateStatement,
         UnsupportedSqlStatement,
 
         // [TYPECOBOL]

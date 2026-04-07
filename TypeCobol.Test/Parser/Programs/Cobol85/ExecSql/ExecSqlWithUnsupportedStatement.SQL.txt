@@ -6,8 +6,12 @@ line 14: InsertStatement
 - HostVariables:
   - IN WS-VAR1 -> COL1
   - IN WS-VAR2 -> COL2
-line 19: UnsupportedSqlStatement
-- SqlKeyword = UPDATE
+line 19: UpdateStatement
+- TableName = TABLE1
+- SetBindings:
+  - IN WS-VAR1 -> COL1
+- WhereBindings:
+  - IN WS-VAR2 -> <NULL>
 line 25: UnsupportedSqlStatement
 - SqlKeyword = DELETE
 line 30: UnsupportedSqlStatement

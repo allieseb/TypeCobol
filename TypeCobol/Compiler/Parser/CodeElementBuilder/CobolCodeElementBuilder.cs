@@ -2475,5 +2475,11 @@ namespace TypeCobol.Compiler.Parser
             Context = context;
             CodeElement = _sqlCodeElementBuilder.CreateInsertStatement(context);
         }
+
+        public override void EnterUpdateStatement([NotNull] CodeElementsParser.UpdateStatementContext context)
+        {
+            Context = context;
+            CodeElement = _sqlCodeElementBuilder.CreateUpdateStatement(context);
+        }
     }
 }

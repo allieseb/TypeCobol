@@ -145,6 +145,7 @@
         AlterSequenceStatement,
         ExecuteImmediateStatement,
         InsertStatement,
+        UpdateStatement,
         UnsupportedSqlStatement
 
     }
