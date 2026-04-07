@@ -231,6 +231,7 @@ codeElement:
 	| insertStatement
 	| updateStatement
 	| sqlDeleteStatement
+	| declareCursorStatement
 	| unsupportedSqlStatement
 
 //	[TYPECOBOL]
@@ -8562,6 +8563,13 @@ whereClauseWithHostVars:
 sqlDeleteStatement:
     SQL_DELETE SQL_FROM tableOrViewOrCorrelationName
     whereClauseWithHostVars?;
+
+// DECLARE CURSOR statement
+// See Documentation [https://www.ibm.com/docs/en/db2-for-zos/12?topic=statements-declare-cursor]
+declareCursorStatement:
+    SQL_DECLARE cursorName=UserDefinedWord SQL_CURSOR
+    (SQL_WITH SQL_HOLD)? (SQL_WITH SQL_RETURN)?
+    SQL_FOR (fullselect | statementName=UserDefinedWord);
 
 // Catch-all rule for SQL statements without dedicated grammar rules.
 // Must be listed LAST among SQL alternatives in codeElement so that

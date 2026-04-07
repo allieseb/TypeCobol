@@ -869,6 +869,17 @@ namespace TypeCobol.Test.Utils
                 return true;
             }
 
+            public override bool Visit(DeclareCursorStatement declareCursorStatement)
+            {
+                _writer.WriteLine($"line {declareCursorStatement.Line}: {nameof(DeclareCursorStatement)}");
+                DumpString(nameof(declareCursorStatement.CursorName), declareCursorStatement.CursorName);
+                DumpObject(nameof(declareCursorStatement.WithHold), declareCursorStatement.WithHold);
+                DumpObject(nameof(declareCursorStatement.WithReturn), declareCursorStatement.WithReturn);
+                DumpObject(nameof(declareCursorStatement.InnerSelect), declareCursorStatement.InnerSelect);
+                DumpString(nameof(declareCursorStatement.StatementName), declareCursorStatement.StatementName);
+                return true;
+            }
+
             public override bool Visit(UnsupportedSqlStatement unsupportedSqlStatement)
             {
                 _writer.WriteLine($"line {unsupportedSqlStatement.Line}: {nameof(UnsupportedSqlStatement)}");

@@ -2487,5 +2487,11 @@ namespace TypeCobol.Compiler.Parser
             Context = context;
             CodeElement = _sqlCodeElementBuilder.CreateSqlDeleteStatement(context);
         }
+
+        public override void EnterDeclareCursorStatement([NotNull] CodeElementsParser.DeclareCursorStatementContext context)
+        {
+            Context = context;
+            CodeElement = _sqlCodeElementBuilder.CreateDeclareCursorStatement(context);
+        }
     }
 }

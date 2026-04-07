@@ -147,6 +147,7 @@
         InsertStatement,
         UpdateStatement,
         SqlDeleteStatement,
+        DeclareCursorStatement,
         UnsupportedSqlStatement
 
     }

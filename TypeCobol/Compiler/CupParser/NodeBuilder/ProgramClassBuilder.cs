@@ -1822,5 +1822,11 @@ namespace TypeCobol.Compiler.CupParser.NodeBuilder
             Exit();
             Dispatcher.OnSqlDeleteStatement(sqlDelete);
         }
+        public void OnDeclareCursorStatement([NotNull] DeclareCursorStatement declareCursor)
+        {
+            Enter(new DeclareCursor(declareCursor), declareCursor);
+            Exit();
+            Dispatcher.OnDeclareCursorStatement(declareCursor);
+        }
     }
 }

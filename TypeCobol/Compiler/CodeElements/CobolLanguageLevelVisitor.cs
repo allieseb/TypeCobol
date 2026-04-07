@@ -420,6 +420,8 @@ namespace TypeCobol.Compiler.CodeElements
         bool Visit([NotNull] Update update);
         bool Visit([NotNull] SqlDeleteStatement sqlDeleteStatement);
         bool Visit([NotNull] SqlDelete sqlDelete);
+        bool Visit([NotNull] DeclareCursorStatement declareCursorStatement);
+        bool Visit([NotNull] DeclareCursor declareCursor);
     }
 
 
@@ -1701,6 +1703,14 @@ namespace TypeCobol.Compiler.CodeElements
             return true;
         }
         public virtual bool Visit([NotNull] SqlDelete sqlDelete)
+        {
+            return true;
+        }
+        public virtual bool Visit([NotNull] DeclareCursorStatement declareCursorStatement)
+        {
+            return true;
+        }
+        public virtual bool Visit([NotNull] DeclareCursor declareCursor)
         {
             return true;
         }

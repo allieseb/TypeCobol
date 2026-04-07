@@ -1,3 +1,7 @@
+--- Diagnostics ---
+Line 31[26,26] <27, Error, Syntax> - Syntax error : mismatched input ',' expecting '.' RuleStack=codeElement>declareCursorStatement>fullselect>subselect>sql_selectClause>selections>selection>tableOrViewAllColumnsSelection>dot,  OffendingSymbol=[26,26:,]<SQL_CommaSeparator>
+Line 31[32,35] <27, Error, Syntax> - Syntax error : mismatched input 'FROM' expecting '.' RuleStack=codeElement>declareCursorStatement>fullselect>subselect>sql_selectClause>selections>selection>tableOrViewAllColumnsSelection>dot,  OffendingSymbol=[32,35:FROM]<SQL_FROM>
+
 --- Sql Statements ---
 line 14: InsertStatement
 - TableName = TABLE1
@@ -16,8 +20,31 @@ line 25: SqlDeleteStatement
 - TableName = TABLE1
 - WhereBindings:
   - IN WS-VAR1 -> <NULL>
-line 30: UnsupportedSqlStatement
-- SqlKeyword = DECLARE
+line 30: DeclareCursorStatement
+- CursorName = C1
+- WithHold = False
+- WithReturn = False
+- InnerSelect = FullSelect
+  - SubSelect = SubSelect
+    - SelectClause = SelectClause
+      - SelectionModifier = <NULL>
+      - Selections = [
+        - Selections[0] = TableOrViewAllColumnsSelection
+          - TableOrViewOrCorrelationName = TableViewCorrelationName
+            - Name = COL1
+        - Selections[1] = TableOrViewAllColumnsSelection
+          - TableOrViewOrCorrelationName = TableViewCorrelationName
+            - Name = COL2
+      ]
+    - FromClause = FromClause
+      - TableReferences = [
+        - TableReferences[0] = SingleTableReference
+          - TableOrViewName = TableViewCorrelationName
+            - Name = TABLE1
+          - CorrelationClause = <NULL>
+      ]
+  - SubQuery = <NULL>
+- StatementName = <NULL>
 line 35: UnsupportedSqlStatement
 - SqlKeyword = OPEN
 line 39: UnsupportedSqlStatement

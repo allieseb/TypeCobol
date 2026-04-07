@@ -179,6 +179,7 @@
         InsertStatement,
         UpdateStatement,
         SqlDeleteStatement,
+        DeclareCursorStatement,
         UnsupportedSqlStatement,
 
         // [TYPECOBOL]

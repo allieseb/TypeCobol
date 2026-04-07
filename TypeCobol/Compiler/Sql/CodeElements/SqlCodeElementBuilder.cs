@@ -1059,5 +1059,26 @@ namespace TypeCobol.Compiler.Sql.CodeElements
             }
             return bindings;
         }
+
+        public DeclareCursorStatement CreateDeclareCursorStatement(CodeElementsParser.DeclareCursorStatementContext context)
+        {
+            string cursorName = context.cursorName?.Text;
+            bool withHold = context.SQL_HOLD() != null;
+            bool withReturn = context.SQL_RETURN() != null;
+
+            FullSelect innerSelect = null;
+            string statementName = null;
+
+            if (context.fullselect() != null)
+            {
+                innerSelect = CreateFullSelect(context.fullselect());
+            }
+            else if (context.statementName != null)
+            {
+                statementName = context.statementName.Text;
+            }
+
+            return new DeclareCursorStatement(cursorName, innerSelect, statementName, withHold, withReturn);
+        }
     }
 }

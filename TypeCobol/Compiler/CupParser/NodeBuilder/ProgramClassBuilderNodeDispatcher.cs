@@ -922,5 +922,9 @@ namespace TypeCobol.Compiler.CupParser.NodeBuilder
         {
             foreach (var listener in _listeners) listener.OnSqlDeleteStatement(sqlDelete);
         }
+        public void OnDeclareCursorStatement([NotNull] DeclareCursorStatement declareCursor)
+        {
+            foreach (var listener in _listeners) listener.OnDeclareCursorStatement(declareCursor);
+        }
     }
 }

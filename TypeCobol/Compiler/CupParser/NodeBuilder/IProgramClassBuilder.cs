@@ -893,6 +893,7 @@ namespace TypeCobol.Compiler.CupParser.NodeBuilder
         void OnInsertStatement([NotNull] InsertStatement insert);
         void OnUpdateStatement([NotNull] UpdateStatement update);
         void OnSqlDeleteStatement([NotNull] SqlDeleteStatement sqlDelete);
+        void OnDeclareCursorStatement([NotNull] DeclareCursorStatement declareCursor);
         #endregion
     }
 }
