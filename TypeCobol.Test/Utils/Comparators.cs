@@ -861,6 +861,14 @@ namespace TypeCobol.Test.Utils
                 return true;
             }
 
+            public override bool Visit(SqlDeleteStatement sqlDeleteStatement)
+            {
+                _writer.WriteLine($"line {sqlDeleteStatement.Line}: {nameof(SqlDeleteStatement)}");
+                DumpString(nameof(sqlDeleteStatement.TableName), sqlDeleteStatement.TableName);
+                DumpHostVariableBindings(sqlDeleteStatement.WhereBindings, "WhereBindings");
+                return true;
+            }
+
             public override bool Visit(UnsupportedSqlStatement unsupportedSqlStatement)
             {
                 _writer.WriteLine($"line {unsupportedSqlStatement.Line}: {nameof(UnsupportedSqlStatement)}");

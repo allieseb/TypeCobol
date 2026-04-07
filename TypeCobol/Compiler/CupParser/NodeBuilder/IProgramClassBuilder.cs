@@ -892,6 +892,7 @@ namespace TypeCobol.Compiler.CupParser.NodeBuilder
         void OnUnsupportedSqlStatement([NotNull] UnsupportedSqlStatement unsupportedSql);
         void OnInsertStatement([NotNull] InsertStatement insert);
         void OnUpdateStatement([NotNull] UpdateStatement update);
+        void OnSqlDeleteStatement([NotNull] SqlDeleteStatement sqlDelete);
         #endregion
     }
 }

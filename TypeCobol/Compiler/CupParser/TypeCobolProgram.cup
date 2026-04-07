@@ -250,6 +250,7 @@ terminal TypeCobol.Compiler.Sql.CodeElements.Statements.AlterSequenceStatement A
 terminal TypeCobol.Compiler.Sql.CodeElements.Statements.ExecuteImmediateStatement ExecuteImmediateStatement;
 terminal TypeCobol.Compiler.Sql.CodeElements.Statements.InsertStatement InsertStatement;
 terminal TypeCobol.Compiler.Sql.CodeElements.Statements.UpdateStatement UpdateStatement;
+terminal TypeCobol.Compiler.Sql.CodeElements.Statements.SqlDeleteStatement SqlDeleteStatement;
 terminal TypeCobol.Compiler.Sql.CodeElements.Statements.UnsupportedSqlStatement UnsupportedSqlStatement;
 
 
@@ -838,6 +839,8 @@ sqlStatement ::= CommitStatement:stmt
 {: my_parser.Builder.OnInsertStatement(stmt); :}
 |	UpdateStatement:stmt
 {: my_parser.Builder.OnUpdateStatement(stmt); :}
+|	SqlDeleteStatement:stmt
+{: my_parser.Builder.OnSqlDeleteStatement(stmt); :}
 |	UnsupportedSqlStatement:stmt
 {: my_parser.Builder.OnUnsupportedSqlStatement(stmt); :}
 ;

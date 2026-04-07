@@ -918,5 +918,9 @@ namespace TypeCobol.Compiler.CupParser.NodeBuilder
         {
             foreach (var listener in _listeners) listener.OnUpdateStatement(update);
         }
+        public void OnSqlDeleteStatement([NotNull] SqlDeleteStatement sqlDelete)
+        {
+            foreach (var listener in _listeners) listener.OnSqlDeleteStatement(sqlDelete);
+        }
     }
 }

@@ -12,8 +12,10 @@ line 19: UpdateStatement
   - IN WS-VAR1 -> COL1
 - WhereBindings:
   - IN WS-VAR2 -> <NULL>
-line 25: UnsupportedSqlStatement
-- SqlKeyword = DELETE
+line 25: SqlDeleteStatement
+- TableName = TABLE1
+- WhereBindings:
+  - IN WS-VAR1 -> <NULL>
 line 30: UnsupportedSqlStatement
 - SqlKeyword = DECLARE
 line 35: UnsupportedSqlStatement

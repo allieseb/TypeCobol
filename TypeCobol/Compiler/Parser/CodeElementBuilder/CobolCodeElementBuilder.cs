@@ -2481,5 +2481,11 @@ namespace TypeCobol.Compiler.Parser
             Context = context;
             CodeElement = _sqlCodeElementBuilder.CreateUpdateStatement(context);
         }
+
+        public override void EnterSqlDeleteStatement([NotNull] CodeElementsParser.SqlDeleteStatementContext context)
+        {
+            Context = context;
+            CodeElement = _sqlCodeElementBuilder.CreateSqlDeleteStatement(context);
+        }
     }
 }

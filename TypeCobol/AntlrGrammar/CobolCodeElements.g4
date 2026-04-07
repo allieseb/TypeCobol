@@ -230,6 +230,7 @@ codeElement:
 	| executeImmediateStatement
 	| insertStatement
 	| updateStatement
+	| sqlDeleteStatement
 	| unsupportedSqlStatement
 
 //	[TYPECOBOL]
@@ -8555,6 +8556,12 @@ updateSetClause:
 // ColonSeparator excluded from negated set so hostVariable gets priority
 whereClauseWithHostVars:
     SQL_WHERE (hostVariable | ~(END_EXEC | ColonSeparator))*;
+
+// DELETE statement (named sqlDeleteStatement to avoid COBOL DELETE collision)
+// See Documentation [https://www.ibm.com/docs/en/db2-for-zos/12?topic=statements-delete]
+sqlDeleteStatement:
+    SQL_DELETE SQL_FROM tableOrViewOrCorrelationName
+    whereClauseWithHostVars?;
 
 // Catch-all rule for SQL statements without dedicated grammar rules.
 // Must be listed LAST among SQL alternatives in codeElement so that

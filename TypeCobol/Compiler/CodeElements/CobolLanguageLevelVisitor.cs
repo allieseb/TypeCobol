@@ -418,6 +418,8 @@ namespace TypeCobol.Compiler.CodeElements
         bool Visit([NotNull] Insert insert);
         bool Visit([NotNull] UpdateStatement updateStatement);
         bool Visit([NotNull] Update update);
+        bool Visit([NotNull] SqlDeleteStatement sqlDeleteStatement);
+        bool Visit([NotNull] SqlDelete sqlDelete);
     }
 
 
@@ -1691,6 +1693,14 @@ namespace TypeCobol.Compiler.CodeElements
             return true;
         }
         public virtual bool Visit([NotNull] Update update)
+        {
+            return true;
+        }
+        public virtual bool Visit([NotNull] SqlDeleteStatement sqlDeleteStatement)
+        {
+            return true;
+        }
+        public virtual bool Visit([NotNull] SqlDelete sqlDelete)
         {
             return true;
         }

@@ -146,6 +146,7 @@
         ExecuteImmediateStatement,
         InsertStatement,
         UpdateStatement,
+        SqlDeleteStatement,
         UnsupportedSqlStatement
 
     }

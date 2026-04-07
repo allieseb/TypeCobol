@@ -1041,6 +1041,13 @@ namespace TypeCobol.Compiler.Sql.CodeElements
             return new UpdateStatement(tableName, setBindings, whereBindings);
         }
 
+        public SqlDeleteStatement CreateSqlDeleteStatement(CodeElementsParser.SqlDeleteStatementContext context)
+        {
+            string tableName = ExtractQualifiedTableName(context.tableOrViewOrCorrelationName());
+            var whereBindings = ExtractWhereHostVariables(context.whereClauseWithHostVars());
+            return new SqlDeleteStatement(tableName, whereBindings);
+        }
+
         private List<HostVariableBinding> ExtractWhereHostVariables(CodeElementsParser.WhereClauseWithHostVarsContext context)
         {
             var bindings = new List<HostVariableBinding>();

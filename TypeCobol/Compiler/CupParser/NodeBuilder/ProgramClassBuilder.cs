@@ -1816,5 +1816,11 @@ namespace TypeCobol.Compiler.CupParser.NodeBuilder
             Exit();
             Dispatcher.OnUpdateStatement(update);
         }
+        public void OnSqlDeleteStatement([NotNull] SqlDeleteStatement sqlDelete)
+        {
+            Enter(new SqlDelete(sqlDelete), sqlDelete);
+            Exit();
+            Dispatcher.OnSqlDeleteStatement(sqlDelete);
+        }
     }
 }
