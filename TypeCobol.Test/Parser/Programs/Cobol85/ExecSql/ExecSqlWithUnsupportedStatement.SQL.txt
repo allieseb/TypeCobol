@@ -1,3 +1,22 @@
-﻿--- Sql Statements ---
+--- Sql Statements ---
+line 14: InsertStatement
+- TableName = TABLE1
+- Columns = [COL1, COL2]
+- HasSubselect = False
+- HostVariables:
+  - IN WS-VAR1 -> COL1
+  - IN WS-VAR2 -> COL2
+line 19: UnsupportedSqlStatement
+- SqlKeyword = UPDATE
+line 25: UnsupportedSqlStatement
+- SqlKeyword = DELETE
+line 30: UnsupportedSqlStatement
+- SqlKeyword = DECLARE
+line 35: UnsupportedSqlStatement
+- SqlKeyword = OPEN
+line 39: UnsupportedSqlStatement
+- SqlKeyword = FETCH
+line 43: UnsupportedSqlStatement
+- SqlKeyword = CLOSE
 line 47: RollbackStatement
 - SavePointClause = <NULL>
