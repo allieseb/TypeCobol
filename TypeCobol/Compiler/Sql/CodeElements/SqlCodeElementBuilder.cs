@@ -92,7 +92,32 @@ namespace TypeCobol.Compiler.Sql.CodeElements
                 fullSelect = CreateFullSelect(context.fullselect());
             }
 
-            return new SelectStatement(fullSelect);
+            var intoVars = new List<HostVariableBinding>();
+            var whereVars = new List<HostVariableBinding>();
+
+            var subSelectCtx = context.fullselect()?.subselect();
+            if (subSelectCtx != null)
+            {
+                if (subSelectCtx.intoClause() != null)
+                {
+                    var selections = subSelectCtx.sql_selectClause()?.selections()?.selection();
+                    int colIndex = 0;
+                    foreach (var hvCtx in subSelectCtx.intoClause().hostVariable())
+                    {
+                        string colName = null;
+                        if (selections != null && colIndex < selections.Length)
+                        {
+                            colName = selections[colIndex].GetText();
+                        }
+                        var binding = CreateHostVariableBinding(hvCtx, HostVariableDirection.OUT, colName);
+                        intoVars.Add(binding);
+                        colIndex++;
+                    }
+                }
+                whereVars = ExtractWhereHostVariables(subSelectCtx.whereClauseWithHostVars());
+            }
+
+            return new SelectStatement(fullSelect, intoVars, whereVars);
         }
 
         private FullSelect CreateFullSelect(CodeElementsParser.FullselectContext context)

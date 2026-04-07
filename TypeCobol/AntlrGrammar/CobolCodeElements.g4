@@ -8426,7 +8426,7 @@ deleteTriggersHandlingClause: (ignore | SQL_RESTRICT SQL_WHEN) SQL_DELETE trigge
 
 selectStatement: fullselect;
 fullselect: subselect;
-subselect: sql_selectClause from_clause;
+subselect: sql_selectClause intoClause? from_clause whereClauseWithHostVars?;
 // See Documentation [https://www.ibm.com/docs/en/db2-for-zos/12?topic=subselect-select-clause]
 sql_selectClause: 
   SQL_SELECT (SQL_ALL|SQL_DISTINCT)? (star | selections);
@@ -8570,6 +8570,9 @@ declareCursorStatement:
     SQL_DECLARE cursorName=UserDefinedWord SQL_CURSOR
     (SQL_WITH SQL_HOLD)? (SQL_WITH SQL_RETURN)?
     SQL_FOR (fullselect | statementName=UserDefinedWord);
+
+// INTO clause for SELECT INTO statements
+intoClause: SQL_INTO hostVariable (SQL_CommaSeparator hostVariable)*;
 
 // Catch-all rule for SQL statements without dedicated grammar rules.
 // Must be listed LAST among SQL alternatives in codeElement so that
