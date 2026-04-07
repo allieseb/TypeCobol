@@ -8533,10 +8533,10 @@ stringExpression: AlphanumericLiteral;
 
 // Catch-all rule for SQL statements without dedicated grammar rules.
 // Must be listed LAST among SQL alternatives in codeElement so that
-// supported statements are tried first.
+// supported statements are tried first. Matches any SQL tokens until END-EXEC,
+// covering all current and future SQL statements not yet parsed individually.
 unsupportedSqlStatement:
-    ( SQL_INSERT | SQL_UPDATE | SQL_DELETE
-    | SQL_DECLARE | SQL_OPEN | SQL_FETCH | SQL_CLOSE ) ~END_EXEC*;
+    ~END_EXEC+;
 
 // ------------------------------
 // End of DB2 coprocessor
