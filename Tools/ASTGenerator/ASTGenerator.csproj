@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<Import Project="..\..\Common.props" />
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>disable</Nullable>
+		<AssemblyName>ASTGenerator</AssemblyName>
+		<Description>
+			Inspection tool that parses COBOL source and emits a JSON dump of the TypeCobol AST.
+		</Description>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\TypeCobol\TypeCobol.csproj" />
+	</ItemGroup>
+
+</Project>
