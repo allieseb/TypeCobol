@@ -197,3 +197,30 @@ ModelManifest.xml
 
 EITests/
 /.localhistory
+
+# === Branche slim : gros fichiers (>1 Mo) retires pour upload GitLab ===
+# Fixtures de test (TypeCobol.Test, hors chaine de build) + documentation.
+# Le parseur (TypeCobol + TypeCobol.Analysis + CSCupRuntime) compile sans eux (verifie).
+/Codegen/src/Documentation/Codegen.docx
+/TypeCobol.LanguageServer/Documentation/TypeCobolLanguageServer/ModelDefinition/TypeCobolLanguageServer.uml
+/TypeCobol.Test/Parser/Performance/AntlrTest.rdz.pgm
+/TypeCobol.Test/ThirdParty/CNAF/Batch/CGM110.cbl
+/TypeCobol.Test/ThirdParty/CNAF/Batch/CGM129.COB
+/TypeCobol.Test/ThirdParty/CNAF/Batch/CGMV01.COB
+/TypeCobol.Test/ThirdParty/CNAF/Batch/CGMX02.COB
+/TypeCobol.Test/ThirdParty/CNAF_TypeCobol/CGMV01-BigTypes-1Procedure.tcbl
+/TypeCobol.Test/ThirdParty/CNAF_TypeCobol/CGMV01-BigTypes.tcbl
+/TypeCobol.Test/ThirdParty/CNAF_TypeCobol/CGMV01-Cobol85-NoRedefines.cbl
+/TypeCobol.Test/ThirdParty/CNAF_TypeCobol/CGMV01-DeepTypes.tcbl
+/TypeCobol.Test/ThirdParty/CNAF_TypeCobol/CGMV01-DeepVariables.cbl
+/TypeCobol.Test/ThirdParty/CNAF_TypeCobol/CGMV01-GlobalStorage.tcbl
+/TypeCobol.Test/ThirdParty/CNAF_TypeCobol/CGMV01-UseAlotOfTypes-100Times.tcbl
+/TypeCobol.Test/ThirdParty/CNAF_TypeCobol/CGMV01-UseAlotOfTypes-1Times.tcbl
+/TypeCobol.Test/ThirdParty/CNAF_TypeCobol/CGMV01-UseAlotOfTypes-WithProc-100Times.tcbl
+/TypeCobol/Documentation/Reference/DB2 11 for zOs - Application Programming and SQL Guide.pdf
+/TypeCobol/Documentation/Reference/IBM Enterprise Cobol 5.1 for zOS - Language Reference.pdf
+/TypeCobol/Documentation/Reference/IBM Enterprise Cobol 5.1 for zOS - Programming Guide.pdf
+/TypeCobol/Documentation/Reference/IBM Enterprise Cobol 6.1 for zOS - Language Reference.pdf
+/TypeCobol/Documentation/Reference/IBM Enterprise Cobol 6.2 for zOS - Language Reference.pdf
+/TypeCobol/Documentation/Reference/IBM Enterprise Cobol 6.3 for zOS - Language Reference.pdf
+/TypeCobol/Documentation/Reference/IBM Enterprise Cobol 6.3 for zOS - Programming Guide.pdf
